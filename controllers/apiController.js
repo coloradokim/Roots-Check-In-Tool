@@ -1,6 +1,7 @@
 // Requires
 var _ = require('lodash');
 var moment = require('moment');
+var moment_timezone = require('moment-timezone');
 var Scan = require('../models/Scan');
 var User = require('../models/user');
 
@@ -17,7 +18,7 @@ var getCurrentEvent = _.partialRight( require('../utils/GetCurrentEvent'), EVENT
 
 /*
 	Currently not using this implementation, but keeping this around if we want to switch back.
-	This waits until the event is over before checking a student in. 
+	This waits until the event is over before checking a student in.
 
 	@param userModel: A mongoose User model item corresponding to the student
 	@param index: A number representing the index of grove calendar event to check in
@@ -68,6 +69,7 @@ var apiController = {
 		5. Redirect the student to the home page for either a SUCCESS or WHOOPS.
 	*/
 	saveScan: function(req, res, socket) {
+		console.log(req.query);
 
 		var scanned_data = req.query.scanned_data;
 		var googleId = req.params.id;
@@ -97,6 +99,7 @@ var apiController = {
 
 					// Was it correct?
 					var correct = currentEvent.location === scanned_data;
+					// console.log(moment().tz("America/Denver").format());
 
 					var newScan = {
 						googleId: user.googleId,
@@ -104,6 +107,7 @@ var apiController = {
 						email: user.email,
 						image: user.image,
 						time: Date.now(),
+						formattedTime: moment_timezone().tz("America/Denver").format('MMMM Do YYYY, h:mm:ss a'),
 						scannedLocation: scanned_data,
 						event: [currentEvent],
 						correct: correct

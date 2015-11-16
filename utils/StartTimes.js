@@ -1,11 +1,10 @@
 var _      = require('lodash');
 var moment = require('moment');
-	
+
 /* Split the hour based on EVENT_LENGTH and TRANSITION_LENGTH
 e.g. if events go for 15 with 5 min transition, 8:55 - 9:10 would
 be the period during which we would show a student that an event
 is starting at 9:00.
-
 Take in event and transition length as parameters so this method can be used in a uniform way on both client and server. */
 module.exports = function(eventLength, transitionLength) {
 	var currentTime = moment( Date.now() );

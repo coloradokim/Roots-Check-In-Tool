@@ -6,6 +6,7 @@ var scanSchema = mongoose.Schema ({
 	googleId: String,
 	image: String,
 	time: String,
+	formattedTime: String,
 	scannedLocation: String,
 	correct: Boolean,
 	event: [{

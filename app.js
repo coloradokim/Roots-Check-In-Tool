@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 // SETUP MONGO
-var mongoDB_URL = process.env.MONGOLAB_URI || 'mongodb://localhost'
+var mongoDB_URL = 'mongodb://localhost' || process.env.MONGOLAB_URI
 mongoose.connect(mongoDB_URL + '/rootsApp');
 
 // SETUP SOCKETS
@@ -42,6 +42,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/scanredirect/:id', function(req, res) {
+	console.log(req);
 	apiController.saveScan(req, res, socket);
 });
 
@@ -53,7 +54,7 @@ app.get('/student-tracker', function(req, res) {
 	indexController.studentTracker(req, res, socket);
 });
 
-// Student Full schedule 
+// Student Full schedule
 app.get('/student-full-schedule', indexController.studentFullSchedule);
 
 //API Routes
