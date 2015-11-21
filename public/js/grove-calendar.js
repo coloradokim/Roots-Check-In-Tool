@@ -9,6 +9,7 @@ require('jquery-ui');
 
 // Global variable students: array of all the student objects
 var students = [];
+console.log(students);
 
 // Load the FOCUS_AREA options for initializing the select2, allowing teachers to input new focus areas if desired
 var FOCUS_AREA_OPTIONS = _.chain(FOCUS_AREAS).keys().sortBy().value().map( function(fa) {
@@ -145,17 +146,17 @@ StudentGroveDisplay.prototype.renderCalendar = function(containerId) {
 			newEvent.activity = activity.split('#')[1];
 
 			var index = self.eventDisplays.length;
-			
+
 			var focus_area = $('#activity-form select[name="focus_area"]').val();
 			newEvent.focus_area = focus_area
 			addToFocus(focus_area);
-			
+
 			newEvent = new EventDisplay(self, newEvent, index);
 
 			self.eventDisplays.push(newEvent);
 
 			newEvent.render('#events-list');
-			
+
 			// Reset the form
 			resetForm(false, true);
 
@@ -170,7 +171,7 @@ StudentGroveDisplay.prototype.renderCalendar = function(containerId) {
 			resetForm(true)
 		});
 	});
-	
+
 	// Update the save calendar button to have disabled class and text of "Save Calendar"
 	$('#save-calendar').empty().append('<i class="fa fa-calendar"></i>   Save Grove Cycle').addClass('disabled');
 
@@ -189,7 +190,7 @@ StudentGroveDisplay.prototype.renderCalendar = function(containerId) {
 			contentType: 'application/json',
 			success: function() {
 				$('#save-calendar').empty().append('<i class="fa fa-calendar"></i>   Cycle Saved!');
-				
+
 			},
 			error: function(xhr, text, error) {
 				$('#save-calendar').empty().removeClass('btn-success').addClass('btn-danger').text('Error Saving').removeClass('disabled');
@@ -235,7 +236,7 @@ EventDisplay.prototype.createDisplay = function() {
 
 // Renders the display element
 EventDisplay.prototype.render = function(container, replace) {
-	
+
 	// Create a new variable pointing to this particular event display so we can reference it in the edit and remove events
 	var self = this;
 
@@ -273,7 +274,7 @@ EventDisplay.prototype.render = function(container, replace) {
 				var focus_area = $('#activity-form select[name="focus_area"]').val();
 				self.event.focus_area = focus_area;
 				addToFocus(focus_area);
-				
+
 				// Reset the form, unbind handlers, and hide it
 				resetForm(true);
 
