@@ -17,7 +17,9 @@ var mailer = nodemailer.createTransport({
 });
 
 var email = {
+  //list of teacher emails goes below
     to: ['schlesinger.kim@gmail.com'],
+    //from jill?
     from: 'jj.letest@rootselementary.org',
     subject: 'Hi there',
     text: 'Awesome sauce',
