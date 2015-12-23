@@ -82,8 +82,7 @@ var teacherController = {
 
 	addTeachertoZone: function(req, res){
 		var data = req.body;
-		data = JSON.parse(data.data);
-		var teacher = data.teacher_id;
+		var teacher = data.image;
 		var zone_request = data.zone;
 		Zone.findOne({}, function(err, zone) {
 			if(!zone){
@@ -105,7 +104,7 @@ var teacherController = {
 					}
 				});
 			}
-			else{
+			else {
 				zone[zone_request].push(teacher);
 				zone.update({$set: zone }, function(err, result) {
 					if (err) {

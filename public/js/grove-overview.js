@@ -37,9 +37,7 @@ var cookie = require('cookie');
 
 function getCurrentTeacher() {
   var cookieObject = cookie.parse(document.cookie);
-  console.log(cookieObject.name);
-  console.log(cookieObject.image);
-  console.log(cookieObject.googleId);
+  return cookieObject
 };
 
 function getStudents(){
@@ -115,17 +113,14 @@ function toggleWatching(zone){
 
 function tapin(zone){
 	console.log("you are the zone: "+ zone.id);
-	googleId = getCurrentTeacher();
-	console.log(googleId);
-	data = {
-		teacher_id: googleId,
-		zone: zone.id
-	};
+	teacherObject = getCurrentTeacher();
+  teacherObject.zone = zone.id;
+  console.log(teacherObject);
 	url = "/api/zone";
 	$.ajax({
 		url: url,
 		type: "POST",
-		data: {data: JSON.stringify(data)},
+		data: teacherObject,
 		dataType: "json",
 		success: function(){
 			refreshMap();
