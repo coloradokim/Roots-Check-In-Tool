@@ -10,39 +10,6 @@ webpackJsonp([1],{
 	__webpack_require__(/*! jquery-ui */ 105);
 	var cookie = __webpack_require__(/*! cookie */ 106);
 	
-	
-	// we may not need these parsing functions anymore:
-	
-	// function from scotch tutorial to parse cookie https://scotch.io/quick-tips/easily-create-read-and-erase-cookies-with-jquery
-	// function readCookie(name) {
-	//   var nameEQ = name + "=";
-	//   var ca = document.cookie.split(';');
-	//   for(var i=0;i < ca.length;i++) {
-	//     var c = ca[i];
-	//     while (c.charAt(0)==' ')
-	//     c = c.substring(1,c.length);
-	//     if (c.indexOf(nameEQ) == 0)
-	//     return c.substring(nameEQ.length,c.length);
-	//     }
-	//   return null;
-	// }
-	//
-	// function urlNameParse (str) {
-	//   var newArr = str.split('')
-	//   var mapArr = newArr.map(function(item) {
-	//     if (item === "%" ) {
-	//       return ""
-	//     } else if (item === "2") {
-	//       return ""
-	//     } else if (item === "0")
-	//       return " "
-	//     else {
-	//       return item
-	//     }
-	//   })
-	//   return mapArr.join("")
-	// }
-	
 	function getCurrentTeacher() {
 	  var cookieObject = cookie.parse(document.cookie);
 	  return cookieObject
@@ -104,7 +71,7 @@ webpackJsonp([1],{
 	}
 	
 	function updateZoneAssignments(zones){
-		console.log(zones)
+	  console.log(zones[0]["zone-flex"]);
 	}
 	
 	function toggleWatching(zone){

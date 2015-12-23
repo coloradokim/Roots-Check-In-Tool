@@ -61,6 +61,7 @@ var teacherController = {
 	},
 
 	groveOverview: function(req, res, socket) {
+		console.log(req.body);
 		var user = {
 			id: req.cookies.googleId,
 			name: req.cookies.name,
