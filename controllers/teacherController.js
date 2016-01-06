@@ -67,7 +67,14 @@ var teacherController = {
 			name: req.cookies.name,
 			image:  req.cookies.image
 		}
-		res.render('grove-overview', {user: user});
+		Zone.find({}, function(err,zones){
+			if (err) {
+				console.error(err);
+			} else {
+				res.render('grove-overview', {user: user, zones: zones});
+			}
+		})
+
 	},
 
 	getZones: function(req, res){

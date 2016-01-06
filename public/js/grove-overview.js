@@ -54,6 +54,7 @@ function getZones(){
 	var zones;
 	$.ajax({
 		url: url,
+    type: "GET",
 		dataType: "json",
 		success: function(zones){
 			zones = zones;
@@ -63,7 +64,7 @@ function getZones(){
 }
 
 function updateZoneAssignments(zones){
-  console.log(zones[0]["zone-flex"]);
+  console.log(zones[0]["zone-writing"]);
 }
 
 function toggleWatching(zone){
@@ -93,7 +94,6 @@ function tapin(zone){
 			refreshMap();
 		}
 	});
-
 }
 
 function tapout(zone){
@@ -113,8 +113,6 @@ function tapout(zone){
 			refreshMap();
 		}
 	});
-
-
 }
 
 function refreshMap(){
@@ -126,6 +124,8 @@ function refreshMap(){
 	// Add other teachers Avitars to the other teachers area
 
 	// update counts of students
+
+  //reload the page
 
 }
 

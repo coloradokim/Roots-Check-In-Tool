@@ -62,6 +62,7 @@ webpackJsonp([1],{
 		var zones;
 		$.ajax({
 			url: url,
+	    type: "GET",
 			dataType: "json",
 			success: function(zones){
 				zones = zones;
@@ -71,7 +72,7 @@ webpackJsonp([1],{
 	}
 	
 	function updateZoneAssignments(zones){
-	  console.log(zones[0]["zone-flex"]);
+	  console.log(zones[0]["zone-writing"]);
 	}
 	
 	function toggleWatching(zone){
@@ -101,7 +102,6 @@ webpackJsonp([1],{
 				refreshMap();
 			}
 		});
-	
 	}
 	
 	function tapout(zone){
@@ -121,8 +121,6 @@ webpackJsonp([1],{
 				refreshMap();
 			}
 		});
-	
-	
 	}
 	
 	function refreshMap(){
@@ -134,6 +132,8 @@ webpackJsonp([1],{
 		// Add other teachers Avitars to the other teachers area
 	
 		// update counts of students
+	
+	  //reload the page
 	
 	}
 	
